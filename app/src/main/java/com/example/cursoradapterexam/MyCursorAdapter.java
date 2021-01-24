@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 public class MyCursorAdapter extends CursorAdapter {
 
     public MyCursorAdapter(Context context, Cursor c) {
@@ -26,6 +28,8 @@ public class MyCursorAdapter extends CursorAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.photo_image);
 
         String uri = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA));
-        imageView.setImageURI(Uri.parse(uri));
+//        imageView.setImageURI(Uri.parse(uri));
+
+        Glide.with(context).load(uri).into(imageView);
     }
 }
